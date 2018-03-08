@@ -4,7 +4,7 @@ Last updated 2018-03-08
 
 ## Introduction
 
-As mentioned in the [main explainer](explainer.md), web authors have expressed interest to improve the Find-in-page experience. Some ideas such as allowing regex queries, or finding in other pages in the website as well is better suited when the web authors to make their own Find-in-page UI and utilize the API described in the main explainer. Some cases, however, might not need a completely custom UI. This explainer describes those cases and our proposed APIs to them.
+As mentioned in the [main explainer](explainer.md), web authors have expressed interest to improve the find-in-page experience. Some ideas such as allowing regex queries, or finding in other pages in the website as well is better suited when the web authors to make their own find-in-page UI and utilize the API described in the main explainer. Some cases, however, might not need a completely custom UI. This explainer describes those cases and our proposed APIs to them.
 
 
 ## Example code
@@ -19,8 +19,8 @@ window.addEventListener(‘findinginpage’, e => {
   }
 });
 
-// Notify browser to redo last Find-in-page query when new data is loaded
-<iframe id="myframe" src="..." onload="windw.navigator.redoFind()"></iframe>
+// Notify browser to redo last find-in-page query when new data is loaded
+<iframe id="myframe" src="..." onload="window.navigator.redoFind()"></iframe>
 
 // TODO: add example for setting deferred results?
 ```
@@ -92,6 +92,6 @@ Calling `setDeferredResults{BeforeFirst,AfterLast}` with a list of `FindInPageRe
 
 ### Allow web page to notify browser that new content has been loaded/modified
 
-`Window.navigator.redoFind()` can be called to notify browser that some content has been loaded/modified, and the browser should redo finding.
+`window.navigator.redoFind()` can be called to notify browser that some content has been loaded/modified, and the browser should redo finding.
 
 *Note: we might actually not need an API for this, and just improve browsers internally so that it will redo find in page if it’s idle and detected change in the DOM (though currently Chrome, Safari and Firefox does not redo find when DOM content is updated)*

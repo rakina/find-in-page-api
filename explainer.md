@@ -19,7 +19,7 @@ To address these interests, we are presenting a collection of Web APIs to intera
 
 * Extending the browser's built-in UI to find items that will never be in the current page's DOM, such as other chapters in a book, or other threads in a forum
 
-## Providing a custom Find-in-page UI
+## Providing a custom find-in-page UI
 
 
 ### Example code
@@ -50,7 +50,7 @@ window.addEventListener("openfind", e => {
 *Note: currently there are a lot of websites that try to do this by detecting Ctrl+F, but they failed to detect when a user opens the Find UI from the browser’s menu (which is pretty much the only option in mobile).*
 
 
-## Other Find-in-page APIs
+## Other find-in-page APIs
 Other than suppressing the browser's Find UI, there are some cases that we want to propose solutions for, such as making the browser wait for loading of data before proceeding a find action or adding to the browser's list of find results. As these cases are more complicated, we are making a separate document for those cases [here](explainer-extended.md).
 
 
