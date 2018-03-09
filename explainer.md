@@ -1,7 +1,5 @@
 # Find-in-page Improvements
 
-Last updated 2018-03-08
-
 ## Introduction
 
 There have been a lot of interest in improving the find-in-page experience from web developers, including:
@@ -41,12 +39,7 @@ When the user initiates action to open browser’s Find UI (by keypress or menu 
 ### Use case
 
 A web page has a completely custom way of loading data, and they want to provide a completely custom search UI. They can do this by adding an event listener for `openfind` Event, and calling `preventDefault()` on it, and then show their search UI instead.
-```js
-window.addEventListener("openfind", e => {
-  e.preventDefault();
-  showCustomUI();
-});
-```
+
 *Note: currently there are a lot of websites that try to do this by detecting Ctrl+F, but they failed to detect when a user opens the Find UI from the browser’s menu (which is pretty much the only option in mobile).*
 
 

@@ -1,7 +1,5 @@
 # Other Find-in-page Improvements
 
-Last updated 2018-03-08
-
 ## Introduction
 
 As mentioned in the [main explainer](explainer.md), web authors have expressed interest to improve the find-in-page experience. Some ideas such as allowing regex queries, or finding in other pages in the website as well is better suited when the web authors to make their own find-in-page UI and utilize the API described in the main explainer. Some cases, however, might not need a completely custom UI. This explainer describes those cases and our proposed APIs to them.
@@ -19,35 +17,7 @@ window.addEventListener(‘findinginpage’, e => {
   }
 });
 
-// Notify browser to redo last find-in-page query when new data is loaded
-<iframe id="myframe" src="..." onload="window.navigator.redoFind()"></iframe>
-
-// TODO: add example for setting deferred results?
-```
-
-## Key scenarios
-
-
-### Want to allow browser to search data not currently in the DOM tree by loading the data
-
-A web page doesn’t have all the data currently in the DOM tree detects a find event, and want to load more data so that the browser’s built-in search can find the data.
-
-```js
-window.addEventListener("findinginpage", e => {
-  e.waitUntil(loadMoreDataIntoDOM());
-});
-```
-
-### The DOM has been modified since the start of the last find query
-
-New content has been added/some content has been modified on the DOM, and the web page wants the browser to redo the built-in search for the currently running/recently finished find query, so that the results reflect the current situation of the DOM.
-```js
-window.navigator.redoFind()
-```
-###  The web page wants to supplement results to the browser’s find results
-
-A web page wants to give additional search results to the browser, possibly due to not wanting to load more data into the DOM (maybe when there is an infinite amount of data)
-```js
+// Add additional results to browser's find-in-page results
 window.addEventListener("findinginpage", e => {
   const offScreenResult = new FindInPageResult({
     async goToCallback() {
@@ -60,7 +30,26 @@ window.addEventListener("findinginpage", e => {
   
   e.setDeferredResults([offScreenResult]);
 });
+
+// Notify browser to redo last find-in-page query when new data is loaded
+<iframe id="myframe" src="..." onload="window.navigator.redoFind()"></iframe>
+
 ```
+
+## Key scenarios
+
+
+### Want to allow browser to search data not currently in the DOM tree by loading the data
+
+A web page doesn’t have all the data currently in the DOM tree detects a find event, and want to load more data so that the browser’s built-in search can find the data.
+
+### The DOM has been modified since the start of the last find query
+
+New content has been added/some content has been modified on the DOM, and the web page wants the browser to redo the built-in search for the currently running/recently finished find query, so that the results reflect the current situation of the DOM.
+###  The web page wants to supplement results to the browser’s find results
+
+A web page wants to give additional search results to the browser, possibly due to not wanting to load more data into the DOM (maybe when there is an infinite amount of data)
+
 
 ###  A search engine wants to find a certain search query, but not all data is in the DOM (due to lazy rendering, etc)
 
