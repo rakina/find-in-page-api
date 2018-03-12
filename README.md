@@ -38,6 +38,8 @@ window.on('openfind', e => {
 
 When the user initiates action to open browser’s Find UI (by keypress or menu selection), the browser will first fire a DOM Event `openfind` (using the Event constructor). If the webpage cancels the event by calling `preventDefault()`, then the browser’s Find UI will not be shown. Otherwise, the browser's Find UI will be shown as usual.
 
+The browser should also provide a "power user" mechanism for accessing the default Find UI that is not interceptable; for example, something like Ctrl+Shift+F, holding Shift while clicking the menu item, or a page-level preference similar to the popup blocker toggle or other permissions. In most cases sites will be using `openfind` to fix an otherwise-broken find-in-page experience, where the important content is not in the DOM due to lazy- or canvas-based rendering. But sometimes power users have a clear concept of the DOM vs. other in-memory data structures, and will want a way to search the DOM specifically, instead of using the web page-supplied UI to search over arbitrary data.
+
 ### Use case
 
 A web page has a completely custom way of loading data, and they want to provide a completely custom search UI. They can do this by adding an event listener for `openfind` Event, and calling `preventDefault()` on it, and then show their search UI instead.
