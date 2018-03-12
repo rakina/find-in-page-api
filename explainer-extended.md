@@ -2,14 +2,14 @@
 
 ## Introduction
 
-As mentioned in the [main explainer](explainer.md), web authors have expressed interest to improve the find-in-page experience. Some ideas such as allowing regex queries, or finding in other pages in the website as well is better suited when the web authors to make their own find-in-page UI and utilize the API described in the main explainer. Some cases, however, might not need a completely custom UI. This explainer describes those cases and our proposed APIs to them.
+As mentioned in the [main explainer](README.md), web authors have expressed interest to improve the find-in-page experience. Some ideas such as allowing regex queries, or finding in other pages in the website as well is better suited when the web authors to make their own find-in-page UI and utilize the API described in the main explainer. Some cases, however, might not need a completely custom UI. This explainer describes those cases and our proposed APIs to them.
 
 
 ## Example code
 
 ```js
 // Listen to find events and make the UI wait for loading of data
-window.addEventListener(‘findinginpage’, e => {
+window.addEventListener("findinginpage", e => {
   if (e.findNext) {
     e.waitUntil(loadTweetsBefore(bottomTweet));
   } else if (e.findPrev) {
@@ -53,7 +53,7 @@ A web page wants to give additional search results to the browser, possibly due 
 
 ###  A search engine wants to find a certain search query, but not all data is in the DOM (due to lazy rendering, etc)
 
-For search engines that use a full headless browser for their crawling (in order to, e.g., execute JavaScript), the crawler can invoke the headless browser's find-in-page functionality. The web page will use these APIs in the fashion described above, loading the appropriate results. The crawler can then index the DOM. The 
+For search engines that use a full headless browser for their crawling (in order to, e.g., execute JavaScript), the crawler can invoke the headless browser's find-in-page functionality. The web page will use these APIs in the fashion described above, loading the appropriate results. The crawler can then index the DOM. 
 
 
 ## APIs

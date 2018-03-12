@@ -8,6 +8,8 @@ There have been a lot of interest in improving the find-in-page experience from 
 * Reflecting real-time data loading/modification on find results
 * Treating multiple webpages as one searchable instance, e.g. books, multi-page articles, or the multipage HTML spec 
 
+Sources: [1](https://github.com/whatwg/html/issues/2858), [2](https://lists.w3.org/Archives/Public/public-whatwg-archive/2014Feb/0140.html), [3](https://lists.w3.org/Archives/Public/public-webapps/2013OctDec/0640.html)
+
 To address these interests, we are presenting a collection of Web APIs to interact with or even completely override the browser’s find-in-page UI.
 ### Goals
 
