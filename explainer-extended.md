@@ -10,10 +10,10 @@ As mentioned in the [main explainer](README.md), web authors have expressed inte
 ```js
 // Listen to find events and make the UI wait for loading of data
 window.addEventListener("findinginpage", e => {
-  if (e.findNext) {
-    e.waitUntil(loadTweetsBefore(bottomTweet));
-  } else if (e.findPrev) {
+  if (e.direction == "prev" && e.currentActiveMatchIndex <= LOAD_MATCHES_THRESHOLD) {
     e.waitUntil(loadNewTweets());
+  } else if (e.direction == "next" && e.currentActiveMatchIndex >= e.totalMatches - LOAD_MATCHES_THRESHOLD) {
+    e.waitUntil(loadTweetsBefore(bottomTweet));
   }
 });
 
@@ -64,10 +64,11 @@ When the browser’s Find UI receives some user action such as find next or upda
 
 `findinginpage` event have these attributes:
  * `searchString`: corresponds to the search string typed into the browser’s find UI
- * `findNext`: boolean value, true if this is a find next action
- * `findPrev`: boolean value, true if this is a find previous action
+ * `direction`: can be "previous" or "next" or `null`, corresponding to user action. If `null`, then it is not a find prev/next action.
+ * `totalMatches`: number of matches found by the browser currently
+ * `currentActiveMatchIndex`: the current active match/currently selected match. Matches are numbered from 1 to `totalMatches`.
 
-Additionally it may also have the attributes `caseSensitive` and `wholeWordsOnly` that correspond to the value of the options in the browser’s find UI. The event will also have a signal property, which is an AbortSignal that gets signaled if the user cancels the search (including by initiating a new search, which may happen by changing the search string, or changing any of the options)
+Additionally it may also have the attributes `caseSensitive` and `wholeWordsOnly` that correspond to the value of the options in the browser’s find UI. The event will also have a signal property, which is an `AbortSignal` that gets signaled if the user cancels the search (including by initiating a new search, which may happen by changing the search string, or changing any of the options)
 
 ### Allow web page to send find results to browser
 
