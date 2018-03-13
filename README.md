@@ -71,3 +71,8 @@ Some examples:
 Other than suppressing the browser's Find UI, there are some cases that we want to propose solutions for, such as making the browser wait for loading of data before proceeding a find action or adding to the browser's list of find results. As these cases are more complicated, we are making a separate document for those cases [here](explainer-extended.md).
 
 
+
+## Related technologies
+### window.find()
+`window.find()` is a non-standard API used to search a certain string in the current window. It can't be used to communicate with / suppress browser's Find-in-page, so it is entirely different from the API we are proposing in this explainer.
+

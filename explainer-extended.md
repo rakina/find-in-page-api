@@ -28,7 +28,7 @@ window.addEventListener("findinginpage", e => {
     estimatedScrollPosition: 90 // out of 100??
   });
   
-  e.setDeferredResults([offScreenResult]);
+  e.addResults([offScreenResult]);
 });
 
 // Notify browser to redo last find-in-page query when new data is loaded
@@ -71,13 +71,13 @@ Additionally it may also have the attributes `caseSensitive` and `wholeWordsOnly
 
 ### Allow web page to send find results to browser
 
-Additional methods on `findinginpage` event: `setDeferredResultsBeforeFirst(findResults)` and `setDeferredResultsAfterLast(findResults)`, where `findResults` is an array of `FindInPageResult`s.
+Additional method on `findinginpage` event: `addResults(findResults)`, where `findResults` is an array of `FindInPageResult`s.
 
 `FindInPageResult` have these attributes:
 * `callback`: the function to be called when we want to show this result (when the user calls find prev/next until it reaches this find result)
 * `estimatedScrollPosition`: the estimated scroll position of where the result is in the page
 
-Calling `setDeferredResults{BeforeFirst,AfterLast}` with a list of `FindInPageResult`s will add them to the browser’s find-in-page results, before the first result and after the last result, respectively. When the find result needs to be shown, `callback` is called.
+Calling `addResults` with a list of `FindInPageResult`s will add them to the browser’s find-in-page results, before the first result and after the last result, respectively. When the find result needs to be shown, `callback` is called.
 
 ### Allow web page to notify browser that new content has been loaded/modified
 
