@@ -18,6 +18,10 @@ To address these interests, we are presenting a collection of Web APIs to intera
 ### Non-goals
 
 * Extending the browser's built-in UI to find items that will never be in the current page's DOM, such as other chapters in a book, or other threads in a forum
+* Customizing the appearance of the find-in-page matches.
+* Customizing the browser's built-in algorithm for find-in-page matching (e.g. case folding, smart quotes, etc.)
+
+The last two non-goals are worthwhile projects for follow-up specs, but not in scope for this work.
 
 ## Providing a custom find-in-page UI
 
