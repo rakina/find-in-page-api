@@ -79,4 +79,6 @@ Other than suppressing the browser's Find UI, there are some cases that we want 
 ## Related technologies
 ### window.find()
 `window.find()` is a non-standard API used to search a certain string in the current window. It can't be used to communicate with / suppress browser's Find-in-page, so it is entirely different from the API we are proposing in this explainer.
+### FindText API
+[FindText API](https://www.w3.org/TR/findtext/) is a proposed API for text searching and Range finding.  As it also can't be used to communicate with / suppress browser's Find-in-page, it is entirely different from the API we are proposing in this explainer too.
 
